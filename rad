@@ -1,0 +1,84 @@
+<!-- fungsi -->
+
+<?php
+    //fungsi nilai akhir
+    function hitungNilaiAkhir($tugas,$uts,$uas){
+        $hasil=($tugas*0.3)+($uts*0.3)+($uas*0.4);
+        return $hasil;
+    }
+
+    //fungsi grade
+    function grade($nilaiAkhir){
+        if($nilaiAkhir >= 85){
+            return "A";
+        }elseif($nilaiAkhir >= 75){
+            return "B";
+        }elseif($nilaiAkhir >= 65){
+            return "C";
+        }else {
+            return "D";
+        }
+    }
+
+    //fungsi status
+    function statusKelulusan($nilaiAkhir){
+        if($nilaiAkhir <65){
+            return "TIDAK LULUS";
+        }else{
+            return "LULUS";
+        }
+    }
+?>
+
+<html>
+    <head>
+        <tittle>Latihan fungsi</tittle>
+    </head>
+    <body>
+        <h2>Input Nilai Mahasiswa</h2>
+        <form method="POST">
+            <label>Nama Mahasiswa</label>
+            <input type="text" name="nama">
+
+            <label>Nilai Tugas</label>
+            <input type="number" name="tugas">
+
+            <label>Nilai UTS</label>
+            <input type="number" name="uts">
+
+            <label>Nilai UAS</label>
+            <input type="number" name="uas">
+
+            <input type="submit" name="submit" value="Proses">
+        </form>
+        <?php
+            if(isset($_POST['submit'])){
+                $nama=$_POST['nama'];
+                $tugas=$_POST['tugas'];
+                $uts=$_POST['uts'];
+                $uas=$_POST['uas'];
+
+                //pemangggilan fungsi
+                $nilaiAkhir = hitungNilaiAkhir($tugas, $uts, $uas);
+                $grade = grade($nilaiAkhir);
+                $statuskelulusan = statusKelulusan($nilaiAkhir);
+
+            ?>
+            <h3>Hasil Penilaian</h3>
+            <p>
+                <b>Nama: </b>
+                <?php echo $nama; ?>
+            </p>
+            <p>
+                <b>Nilai Akhir: </b>
+                <?php echo $nilaiAkhir; ?>
+            </p>
+            <p>
+                <b>Grade: </b>
+                <?php echo $grade; ?>
+            </p>
+            <?php
+            }
+            ?>
+    </body>
+</html>
