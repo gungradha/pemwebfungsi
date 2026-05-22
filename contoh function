@@ -1,0 +1,43 @@
+<!-- 1 parameter -->
+<?php
+function perkenalan($nama){
+    echo "Halo, nama saya $nama";
+}
+
+perkenalan ("Radha"); //$nama=Radha
+?>
+
+<br>
+<!-- banyak parameter -->
+<?php
+    function hitung($a, $b){
+        $hasil = $a + $b;
+        echo $hasil;
+    }
+
+    hitung (5,3);
+?>
+
+<br>
+<!-- opsional arguments -->
+<?php
+    function salam ($nama= "Mahasiswa"){
+        echo "Halo, $nama";
+    }
+
+    salam();
+?>
+
+<br>
+<!-- call by value -->
+ <?php
+    function ubahNilai($a){
+        $a=100;
+        echo "Nilai di dalam fungsi: $a";
+    }
+
+    $b=10;
+    ubahNilai($b);
+    echo "<br>";
+    echo "Nilai di luar fungsi: $b"
+ ?>
